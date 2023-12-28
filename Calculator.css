@@ -30,6 +30,10 @@
     background-color: rgb(202, 238, 250);
 }
 
+.calculator-table td.variable, #variable-assignment {
+    background-color: rgb(146, 202, 221);
+}
+
 #display {
     text-align: left;
 }
