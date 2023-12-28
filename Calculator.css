@@ -16,11 +16,18 @@
     width: 100px;
     height: 50px;
     border-collapse: collapse;
+    border-radius: 10px;
     padding: 10px;
     border: 1px solid black;
     background-color: lightblue;
     font-family: "Verdana";
     text-align: center;
+    transition: all;
+    transition-duration: 500ms;
+}
+
+.calculator-table td.number {
+    background-color: rgb(202, 238, 250);
 }
 
 #display {
@@ -29,4 +36,10 @@
 
 .calculator-table td:hover {
     background-color:lightcoral;
+    border-radius: 50%;
+}
+
+#display:hover {
+    background-color: lightblue;
+    border-radius: 10px;
 }

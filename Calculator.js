@@ -1,6 +1,5 @@
 let display = document.getElementById('display');
 let numberButton = document.querySelectorAll('.number');
-let periodButton = document.getElementById('period');
 let clearButton = document.getElementById('clear');
 let deleteButton = document.getElementById('delete');
 let enterButton = document.getElementById('enter');
