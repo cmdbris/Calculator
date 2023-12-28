@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="Calculator.css">
+    <script src="Calculator.js" defer></script>
+
+    <!-- Web Page title -->
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div></div>
+
+        <table class="calculator-table">
+            <tr>
+                <td colspan="8" id="display">ENTER</td>
+            </tr>
+            <tr>
+                <td id="clear">Clear</td>
+                <td id="delete">Delete</td>
+                <td class="complex-operator" calculator-data="**">^</td>
+                <td class="complex-operator" calculator-data="Math.sqrt">sqrt</td>
+                <td class="number" calculator-data="1">1</td>
+                <td class="number" calculator-data="2">2</td>
+                <td class="number" calculator-data="3">3</td>
+                <td class="basic-operator" calculator-data="+">+</td>
+            </tr>
+            <tr>
+                <td class="basic-operator" calculator-data="(">(</td>
+                <td class="basic-operator" calculator-data=")">)</td>
+                <td class="complex-operator" calculator-data="Math.exp">e^</td>
+                <td class="complex-operator" calculator-data="Math.log">ln</td>
+                <td class="number" calculator-data="4">4</td>
+                <td class="number" calculator-data="5">5</td>
+                <td class="number" calculator-data="6">6</td>
+                <td class="basic-operator" calculator-data="-">-</td>
+            </tr>
+            <tr>
+                <td class="complex-operator" calculator-data="Math.sin">sin</td>
+                <td class="complex-operator" calculator-data="Math.cos">cos</td>
+                <td class="complex-operator" calculator-data="Math.tan">tan</td>
+                <td class="complex-operator" calculator-data="Math.E">e</td>
+                <td class="number" calculator-data="7">7</td>
+                <td class="number" calculator-data="8">8</td>
+                <td class="number" calculator-data="9">9</td>
+                <td class="basic-operator" calculator-data="*">x</td>
+            </tr>
+            <tr>
+                <td class="complex-operator" calculator-data="Math.asin">arcsin</td>
+                <td class="complex-operator" calculator-data="Math.acos">arcos</td>
+                <td class="complex-operator" calculator-data="Math.atan">arctan</td>
+                <td class="complex-operator" calculator-data="Math.PI">pi</td>
+                <td id="period">.</td>
+                <td class="number" calculator-data="0">0</td>
+                <td id="enter">=</td>
+                <td class="basic-operator" calculator-data="/">/</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
