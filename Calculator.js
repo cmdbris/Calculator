@@ -53,7 +53,7 @@ deleteButton.addEventListener('click', function () {
 });
 
 enterButton.addEventListener('click', function () {
-    computeInputs(inputVariable);
+    computeInputs();
 });
 
 ansButton.addEventListener('click', function () {
@@ -106,10 +106,10 @@ function addInput(element, calculatorData) {
     displayInputs.push(element);
     updateDisplay(displayInputs);
     calculatorInputs.push(calculatorData);
-    if (element == '=' && displayInputs.length > 0) {
-        calculatorInputs.splice(displayInputs.length - 1, 1, displayInputs(displayInputs.length)) // array.splice(indexToReplace, 1, newValue);
+    if (element === '=' && displayInputs.length > 0) {
+        calculatorInputs.splice(calculatorInputs.length - 2, 1, ''); // array.splice(indexToReplace, 1, newValue);
     }
-
+    
 }
 
 function clearInputs() {
@@ -124,9 +124,8 @@ function deleteInputs() {
     updateDisplay(displayInputs);
 }
 
-function computeInputs(inputVariable) {
+function computeInputs() {
     try {
-        alert(calculatorInputs);
         expressionFunction = new Function('return ' + calculatorInputs.join(''))
         Ans = expressionFunction();
     } catch (error) {

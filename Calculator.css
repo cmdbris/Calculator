@@ -1,3 +1,5 @@
+/* Calculator default attributes */
+
 .container {
     position: absolute;
     top: 50%;
@@ -26,7 +28,7 @@
     transition-duration: 500ms;
 }
 
-.calculator-table td.number {
+.calculator-table td.number, #enter, #ans {
     background-color: rgb(202, 238, 250);
 }
 
@@ -46,4 +48,66 @@
 #display:hover {
     background-color: rgb(200, 239, 252);
     border-radius: 10px;
+    transform: scale(1.10);
+}
+
+#enter:hover, #ans:hover {
+    background-color: lightcoral;
+    border-radius: 10px;
+    transform: scale(1.10);
+}
+
+/* Complimentary user dependent Calculator attributes */
+
+.options-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 80%;
+    top: 20%;
+}
+
+.checkbox-placeholder {
+    position: relative;
+    width: 250px;
+    height: 50px;
+    border: 1px solid black;
+    background-color: lightblue;
+    font-family: "Verdana";
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="checkbox"] {
+    display: none; /* Hide the default checkbox */
+}
+
+label {
+    position: relative;
+    padding-left: 30px; /* Space for the custom checkbox */
+    cursor: pointer;
+}
+
+label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px; /* Adjust the size of the custom checkbox */
+    height: 20px;
+    border: 2px solid #333; /* Border color of the custom checkbox */
+    background-color: #fff; /* Background color of the custom checkbox */
+}
+
+input[type="checkbox"]:checked + label:before {
+    background-color: rgb(118, 181, 202); /* Change the background color when the checkbox is checked */
+    border-color: rgb(79, 154, 179); /* Change the border color when the checkbox is checked */
+    content: "\2714"; /* Check symbol */
+            color: #fff; /* Color of the check symbol */
+            font-size: 16px; /* Adjust the font size of the check symbol */
+            text-align: center;
+            line-height: 20px; /* Keep the line height consistent */
 }
