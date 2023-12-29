@@ -6,24 +6,18 @@ let enterButton = document.getElementById('enter');
 let basicOperatorButton = document.querySelectorAll('.basic-operator');
 let complexOperatorButton = document.querySelectorAll('.complex-operator');
 let variableButton = document.querySelectorAll('.variable');
-let variableAssignmentButton = document.getElementById('ans');
+let variableAssignmentButton = document.getElementById('variable-assignment');
 let ansButton = document.getElementById('ans');
 
 let displayInputs = [];
 let calculatorInputs = [];
 let Ans;
-let variable = false;
-let A;
-let B;
-let C;
-let D;
-let E;
-let F;
-let G;
+let variableLetter;
+let variableValues = {}; // Object to store variable assignments
 
 // Iterate through the elements and add a click event listener to each
 numberButton.forEach(function (element) {
-    element.addEventListener('click', function () {
+    element.addEventListener('click', function (event) {
         let targetButton = event.target;
         let expressionNotation = targetButton.getAttribute('calculator-data');
         addInput(this.innerHTML, expressionNotation); // "this" refers to the clicked element
@@ -31,7 +25,7 @@ numberButton.forEach(function (element) {
 });
 
 basicOperatorButton.forEach(function (element) {
-    element.addEventListener('click', function () {
+    element.addEventListener('click', function (event) {
         let targetButton = event.target;
         let expressionNotation = targetButton.getAttribute('calculator-data');
         addInput(this.innerHTML, expressionNotation); // "this" refers to the clicked element
@@ -39,7 +33,7 @@ basicOperatorButton.forEach(function (element) {
 });
 
 complexOperatorButton.forEach(function (element) {
-    element.addEventListener('click', function () {
+    element.addEventListener('click', function (event) {
         let targetButton = event.target;
         let expressionNotation = targetButton.getAttribute('calculator-data');
         addInput(this.innerHTML, expressionNotation); // "this" refers to the clicked element
@@ -62,17 +56,33 @@ ansButton.addEventListener('click', function () {
     if (typeof Ans !== 'undefined') {
         // Ans is defined
         addInput(this.innerHTML, Ans.toString());
-    } 
+    }
     else {
         // Ans is not defined
-        display.innerHTML = 'Ans is not defined';
+        display.innerHTML = 'Ans is undefined';
     }
 });
 
-variableAssignmentButton.forEach(function (element) {
+variableButton.forEach(function (element) {
     element.addEventListener('click', function () {
-        addInput(this.innerHTML, Ans.toString()); // "this" refers to the clicked element
+        variableLetter = this.innerHTML;
+        if (typeof variableValues[variableLetter] !== 'undefined' && displayInputs.length !== 0) {
+            // Variable is defined and not being assigned a new value
+            addInput(this.innerHTML, variableLetter.toString());
+        }
+        else if (typeof variableValues[variableLetter] === 'undefined' && displayInputs.length === 0) {
+            // Variable is undefined, but being assigned a value
+            addInput(this.innerHTML, '');
+        }
+        else {
+            // Variable is undefined and not being assigned a value
+            display.innerHTML = `${variableLetter} is undefined`;
+        }
     });
+});
+
+variableAssignmentButton.addEventListener('click', function () {
+    addInput(this.innerHTML, '');
 });
 
 // // Functions used to support the event listeners // //
@@ -97,6 +107,7 @@ function addInput(element, calculatorData) {
 function clearInputs() {
     displayInputs = [];
     calculatorInputs = [];
+    variableLetter = undefined; // Reset the variableLetter
     updateDisplay(displayInputs);
 }
 
@@ -107,7 +118,19 @@ function deleteInputs() {
 }
 
 function computeInputs() {
-    expressionFunction = new Function('return ' + calculatorInputs.join(''))
-    Ans = expressionFunction();
-    display.innerHTML = Ans;
+    try {
+        alert(calculatorInputs);
+        expressionFunction = new Function('return ' + calculatorInputs.join(''))
+        Ans = expressionFunction();
+    } catch (error) {
+        display.innerHTML = 'Error';
+        return;
+    }
+
+    if (displayInputs.length > 0 && displayInputs[0] >= 'A' && displayInputs[0] <= 'G' && displayInputs[1] === '=') {
+        variableValues[variableLetter] = Ans;
+        display.innerHTML = `${variableLetter} = ${Ans}`;
+    } else {
+        display.innerHTML = Ans;
+    }
 }
