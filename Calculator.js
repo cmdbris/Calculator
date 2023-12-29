@@ -5,9 +5,21 @@ let deleteButton = document.getElementById('delete');
 let enterButton = document.getElementById('enter');
 let basicOperatorButton = document.querySelectorAll('.basic-operator');
 let complexOperatorButton = document.querySelectorAll('.complex-operator');
+let variableButton = document.querySelectorAll('.variable');
+let variableAssignmentButton = document.getElementById('ans');
+let ansButton = document.getElementById('ans');
 
 let displayInputs = [];
 let calculatorInputs = [];
+let Ans;
+let variable = false;
+let A;
+let B;
+let C;
+let D;
+let E;
+let F;
+let G;
 
 // Iterate through the elements and add a click event listener to each
 numberButton.forEach(function (element) {
@@ -46,6 +58,23 @@ enterButton.addEventListener('click', function () {
     computeInputs();
 });
 
+ansButton.addEventListener('click', function () {
+    if (typeof Ans !== 'undefined') {
+        // Ans is defined
+        addInput(this.innerHTML, Ans.toString());
+    } 
+    else {
+        // Ans is not defined
+        display.innerHTML = 'Ans is not defined';
+    }
+});
+
+variableAssignmentButton.forEach(function (element) {
+    element.addEventListener('click', function () {
+        addInput(this.innerHTML, Ans.toString()); // "this" refers to the clicked element
+    });
+});
+
 // // Functions used to support the event listeners // //
 
 
@@ -79,7 +108,6 @@ function deleteInputs() {
 
 function computeInputs() {
     expressionFunction = new Function('return ' + calculatorInputs.join(''))
-    display.innerHTML = expressionFunction();
-
-    //display.innerHTML = expression.join(''); // Use join to concatenate array elements
+    Ans = expressionFunction();
+    display.innerHTML = Ans;
 }

@@ -9,7 +9,7 @@
     position: relative;
     border-collapse: separate;
     border-spacing: 10px;
-    border: 2px solid black;
+    border: 2px solid rgb(148, 148, 148);
 }
 
 .calculator-table td {
@@ -44,6 +44,6 @@
 }
 
 #display:hover {
-    background-color: lightblue;
+    background-color: rgb(200, 239, 252);
     border-radius: 10px;
 }
