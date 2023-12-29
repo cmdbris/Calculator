@@ -41,18 +41,18 @@
     text-align: left;
 }
 
-.calculator-table td:hover {
+.enable-hover td:hover {
     background-color:lightcoral;
     border-radius: 50%;
 }
 
-#display:hover {
+.enable-hover #display:hover {
     background-color: rgb(200, 239, 252);
     border-radius: 10px;
     transform: scale(1.10);
 }
 
-#enter:hover, #ans:hover {
+.enable-hover #enter:hover, .enable-hover #ans:hover {
     background-color: lightcoral;
     border-radius: 10px;
     transform: scale(1.10);
