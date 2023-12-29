@@ -12,8 +12,12 @@ let ansButton = document.getElementById('ans');
 let displayInputs = [];
 let calculatorInputs = [];
 let Ans;
-let variableLetter;
+let inputVariable;
 let variableValues = {}; // Object to store variable assignments
+const variableNames = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+variableNames.forEach(variableName => {
+    variableValues[variableName] = undefined; // or any default value you want
+  });
 
 // Iterate through the elements and add a click event listener to each
 numberButton.forEach(function (element) {
@@ -49,7 +53,7 @@ deleteButton.addEventListener('click', function () {
 });
 
 enterButton.addEventListener('click', function () {
-    computeInputs();
+    computeInputs(inputVariable);
 });
 
 ansButton.addEventListener('click', function () {
@@ -65,18 +69,18 @@ ansButton.addEventListener('click', function () {
 
 variableButton.forEach(function (element) {
     element.addEventListener('click', function () {
-        variableLetter = this.innerHTML;
-        if (typeof variableValues[variableLetter] !== 'undefined' && displayInputs.length !== 0) {
+        inputVariable = this.innerHTML;
+        if (typeof variableValues[inputVariable] !== 'undefined') {
             // Variable is defined and not being assigned a new value
-            addInput(this.innerHTML, variableLetter.toString());
+            addInput(this.innerHTML, variableValues[inputVariable].toString());
         }
-        else if (typeof variableValues[variableLetter] === 'undefined' && displayInputs.length === 0) {
+        else if (typeof variableValues[inputVariable] === 'undefined' && displayInputs.length === 0) {
             // Variable is undefined, but being assigned a value
             addInput(this.innerHTML, '');
         }
         else {
             // Variable is undefined and not being assigned a value
-            display.innerHTML = `${variableLetter} is undefined`;
+            display.innerHTML = `${inputVariable} is undefined`;
         }
     });
 });
@@ -102,12 +106,15 @@ function addInput(element, calculatorData) {
     displayInputs.push(element);
     updateDisplay(displayInputs);
     calculatorInputs.push(calculatorData);
+    if (element == '=' && displayInputs.length > 0) {
+        calculatorInputs.splice(displayInputs.length - 1, 1, displayInputs(displayInputs.length)) // array.splice(indexToReplace, 1, newValue);
+    }
+
 }
 
 function clearInputs() {
     displayInputs = [];
     calculatorInputs = [];
-    variableLetter = undefined; // Reset the variableLetter
     updateDisplay(displayInputs);
 }
 
@@ -117,7 +124,7 @@ function deleteInputs() {
     updateDisplay(displayInputs);
 }
 
-function computeInputs() {
+function computeInputs(inputVariable) {
     try {
         alert(calculatorInputs);
         expressionFunction = new Function('return ' + calculatorInputs.join(''))
@@ -127,9 +134,9 @@ function computeInputs() {
         return;
     }
 
-    if (displayInputs.length > 0 && displayInputs[0] >= 'A' && displayInputs[0] <= 'G' && displayInputs[1] === '=') {
-        variableValues[variableLetter] = Ans;
-        display.innerHTML = `${variableLetter} = ${Ans}`;
+    if (displayInputs.length > 0 && displayInputs[0] >= 'A' && displayInputs[0] <= 'G' && displayInputs[1] == '=') {
+        variableValues[inputVariable] = Ans;
+        display.innerHTML = `${inputVariable} = ${Ans}`;
     } else {
         display.innerHTML = Ans;
     }
