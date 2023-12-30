@@ -58,7 +58,7 @@
     transform: scale(1.10);
 }
 
-/* Complimentary user dependent Calculator attributes */
+/* Calculator Checkboxes */
 
 .options-container {
     position: absolute;
@@ -112,3 +112,5 @@ input[type="checkbox"]:checked + label:before {
             text-align: center;
             line-height: 20px; /* Keep the line height consistent */
 }
+
+/* Calculator Colour Options */
