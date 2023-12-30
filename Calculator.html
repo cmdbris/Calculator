@@ -30,17 +30,37 @@
         </div>
         <div class="checkbox-placeholder" id="preset-colour-placeholder">
             <div id="preset-colour-checkbox">
-                <input type="checkbox" id="preset-colour-toggle" checkbox-data="preset">
+                <input type="checkbox" id="preset-colour-toggle">
                 <label for="preset-colour-toggle">Preset Colours</label>
             </div>
         </div>
         <div class="checkbox-placeholder" id="custom-colour-placeholder">
             <div id="custom-colour-checkbox">
-                <input type="checkbox" id="custom-colour-toggle" checkbox-data="custom">
+                <input type="checkbox" id="custom-colour-toggle">
                 <label for="custom-colour-toggle">Custom Colours</label>
             </div>
         </div>
+
+        <div class="colour-modification-placeholder">
+            <div class="preset-colour-options-placeholder">
+                <select id="preset-colour-options">
+                    <option class="preset-colour" preset-colour-data="default">default</option>
+                    <option class="preset-colour" preset-colour-data="red">red</option>
+                    <option class="preset-colour" preset-colour-data="orange">orange</option>
+                    <option class="preset-colour" preset-colour-data="yellow">yellow</option>
+                    <option class="preset-colour" preset-colour-data="green">green</option>
+                    <option class="preset-colour" preset-colour-data="teal">teal</option>
+                    <option class="preset-colour" preset-colour-data="blue">blue</option>
+                </select>
+            </div>
+            <div id="custom-colour-options-placeholder">
+                <input class="custom-colour" type="color" id="favcolor" value="#ff0000">
+                <label for="favcolor">Select your favorite color:</label>
+                <input type="submit" value="Submit">
+            </div>
+        </div>
     </div>
+
 
     <div class="container">
 
