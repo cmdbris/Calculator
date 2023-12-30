@@ -7,6 +7,7 @@
     <style>
         html,
         body {
+            overflow: hidden;
             margin: 0;
             padding: 0;
         }
@@ -21,15 +22,29 @@
 
 <body>
     <div class="options-container">
-        <div class="checkbox-placeholder">
+    <div class="checkbox-placeholder" id="animation-placeholder">
+        <div id="animation-checkbox">
             <input type="checkbox" id="animation-toggle">
             <label for="animation-toggle">Hover Animations</label>
         </div>
     </div>
+    <div class="checkbox-placeholder" id="preset-colour-placeholder">
+        <div id="preset-colour-checkbox">
+            <input type="checkbox" id="preset-colour-toggle">
+            <label for="preset-colour-toggle">Preset Colours</label>
+        </div>
+    </div>
+    <div class="checkbox-placeholder" id="custom-colour-placeholder">
+        <div id="custom-colour-checkbox">
+            <input type="checkbox" id="custom-colour-toggle">
+            <label for="custom-colour-toggle">Custom Colours</label>
+        </div>
+    </div>
+</div>
 
     <div class="container">
 
-        <table class="calculator-table enable-hover">
+        <table class="calculator-table">
             <tr>
                 <td colspan="8" id="display">ENTER</td>
             </tr>
@@ -37,7 +52,7 @@
                 <td id="clear">Clear</td>
                 <td id="delete">Delete</td>
                 <td class="complex-operator" calculator-data="**">^</td>
-                <td class="complex-operator" calculator-data="Math.sqrt">sqrt</td>
+                <td class="complex-operator" calculator-data="Math.sqrt">&#8730;</td>
                 <td class="number" calculator-data="1">1</td>
                 <td class="number" calculator-data="2">2</td>
                 <td class="number" calculator-data="3">3</td>
@@ -61,7 +76,7 @@
                 <td class="number" calculator-data="7">7</td>
                 <td class="number" calculator-data="8">8</td>
                 <td class="number" calculator-data="9">9</td>
-                <td class="basic-operator" calculator-data="*">x</td>
+                <td class="basic-operator" calculator-data="*">&#215;</td>
             </tr>
             <tr>
                 <td class="complex-operator" calculator-data="Math.asin">arcsin</td>
@@ -70,7 +85,7 @@
                 <td class="complex-operator" calculator-data="Math.PI">pi</td>
                 <td class="number" calculator-data=".">.</td>
                 <td colspan="2" class="number" calculator-data="0">0</td>
-                <td class="basic-operator" calculator-data="/">/</td>
+                <td class="basic-operator" calculator-data="/">&#247;</td>
             </tr>
             <tr>
                 <td class="variable">A</td>
