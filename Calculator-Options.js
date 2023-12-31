@@ -17,9 +17,11 @@ let checkbox_TogglePresetColour = document.getElementById('preset-colour-toggle'
 let checkbox_ToggleCustomColour = document.getElementById('custom-colour-toggle');
 let presetColourOptions = document.getElementById('preset-colour-options-placeholder');
 let customColourOptions = document.getElementById('custom-colour-options-placeholder');
+let applyColourButton = document.getElementById('apply-colour');
 
 presetColourOptions.classList.add('disable');
 customColourOptions.classList.add('disable');
+applyColourButton.classList.add('disable');
 
 checkbox_TogglePresetColour.addEventListener("change", function () {
     updateCheckboxes('preset');
@@ -30,6 +32,7 @@ checkbox_ToggleCustomColour.addEventListener("change", function () {
 });
 
 function updateCheckboxes(checkbox) {
+    applyColourButton.classList.add('disable');
     // Check which checkbox was clicked
     // If one checkbox is checked, the other is unchecked
     if (checkbox === 'preset' && checkbox_TogglePresetColour.checked) {
@@ -42,6 +45,11 @@ function updateCheckboxes(checkbox) {
         presetColourOptions.classList.add('disable');
         customColourOptions.classList.remove('disable');
     }
+    else {
+        presetColourOptions.classList.add('disable');
+        customColourOptions.classList.add('disable');
+        applyColourButton.classList.add('disable');
+    }
 }
 
 // Colour changing options functions
@@ -50,11 +58,17 @@ let customColour =  document.getElementById('custom-colour');
 let presetColour = document.getElementById('preset-colour-options');
 
 presetColour.addEventListener('change', function () {
+    applyColourButton.classList.remove('disable');
+});
+
+customColour.addEventListener('input', function() {
+    applyColourButton.classList.remove('disable');
+});
+
+applyColourButton.addEventListener('click', function () {
     let selectedPresetColour = this.value;
     alert(selectedPresetColour);
 });
 
-customColour.addEventListener('input', function() {
-    let selectedCustomColour = this.value;
-    alert(selectedCustomColour);
-});
+let selectedPresetColour = presetColour.value;
+let selectedCustomColour = customColour.value;

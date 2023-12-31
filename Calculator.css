@@ -143,6 +143,22 @@ input[type="color"] {
     cursor: pointer;
 }
 
+#apply-colour {
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding-left: 0px;
+    justify-content: center;
+    transition: all;
+    transition-duration: 500ms;
+}
+
+#apply-colour:hover {
+    background-color: rgb(146, 202, 221);
+    cursor: pointer;
+}
+
 /* input[type="submit"] {
     width: 25%;
     height: 20px;
