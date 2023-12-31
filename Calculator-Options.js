@@ -1,6 +1,6 @@
 // Disabler and Enabler of Classes
 
-let diable = document.getElementsByClassName("diable")[0];
+let disable1 = document.getElementsByClassName("disable")[0];
 
 // Animation checkbox functions
 
@@ -18,8 +18,8 @@ let checkbox_ToggleCustomColour = document.getElementById('custom-colour-toggle'
 let presetColourOptions = document.getElementById('preset-colour-options-placeholder');
 let customColourOptions = document.getElementById('custom-colour-options-placeholder');
 
-presetColourOptions.classList.remove('preset-colour-options');
-customColourOptions.classList.remove('custom-colour-options-placeholder');
+presetColourOptions.classList.add('disable');
+customColourOptions.classList.add('disable');
 
 checkbox_TogglePresetColour.addEventListener("change", function () {
     updateCheckboxes('preset');
@@ -34,12 +34,27 @@ function updateCheckboxes(checkbox) {
     // If one checkbox is checked, the other is unchecked
     if (checkbox === 'preset' && checkbox_TogglePresetColour.checked) {
         checkbox_ToggleCustomColour.checked = false;
-        customColourOptions.classList.remove();
-        presetColourOptions.classList.add();
+        customColourOptions.classList.add('disable');
+        presetColourOptions.classList.remove('disable');
     }
     else if (checkbox === 'custom' && checkbox_ToggleCustomColour.checked) {
         checkbox_TogglePresetColour.checked = false;
-        presetColourOptions.classList.remove();
-        customColourOptions.classList.add();
+        presetColourOptions.classList.add('disable');
+        customColourOptions.classList.remove('disable');
     }
 }
+
+// Colour changing options functions
+
+let customColour =  document.getElementById('custom-colour');
+let presetColour = document.getElementById('preset-colour-options');
+
+presetColour.addEventListener('change', function () {
+    let selectedPresetColour = this.value;
+    alert(selectedPresetColour);
+});
+
+customColour.addEventListener('input', function() {
+    let selectedCustomColour = this.value;
+    alert(selectedCustomColour);
+});
