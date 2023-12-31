@@ -54,14 +54,14 @@ function updateCheckboxes(checkbox) {
 
 // Colour changing options functions
 
-let customColour =  document.getElementById('custom-colour');
+let customColour = document.getElementById('custom-colour');
 let presetColour = document.getElementById('preset-colour-options');
 
-presetColour.addEventListener('change', function () {
+presetColour.addEventListener('click', function () {
     applyColourButton.classList.remove('disable');
 });
 
-customColour.addEventListener('input', function() {
+customColour.addEventListener('input', function () {
     applyColourButton.classList.remove('disable');
 });
 
@@ -75,41 +75,73 @@ applyColourButton.addEventListener('click', function () {
 });
 
 function applyPresetColour(selectedPresetColour) {
-
+    switch (selectedPresetColour) {
+        case 'default':
+            document.documentElement.style.setProperty('--main-colour', 'rgb(173, 216, 230)');
+            document.documentElement.style.setProperty('--light-accent', 'rgb(202, 238, 250)');
+            document.documentElement.style.setProperty('--dark-accent', 'rgb(146, 202, 221)');
+            document.documentElement.style.setProperty('--checked-checkbox-colour', 'rgb(118, 181, 202)');
+            document.documentElement.style.setProperty('--checkbox-border-colour', 'rgb(79, 154, 179)');
+            break;
+        case 'red':
+            applyCustomColour('#FE8686');
+            break;
+        case 'orange':
+            applyCustomColour('#FFB066');
+            break;
+        case 'yellow':
+            applyCustomColour('#FBF8A2');
+            break;
+        case 'green':
+            applyCustomColour('#A1F7AB');
+            break;
+        case 'teal':
+            applyCustomColour('#70FFD4');
+            break;
+        case 'blue':
+            applyCustomColour('#80A6FF');
+            break;
+        case 'purple':
+            applyCustomColour('#CF9EFF');
+            break;
+        case 'pink':
+            applyCustomColour('#FF9EF7');
+            break;
+    }
 }
 
 let originalCustomColour = '#ADD8E6';
 
 function applyCustomColour(selectedCustomColour) {
     // Convert hex to RGB
-    var mainRGB = hexToRgb(originalCustomColour);
-    var newMainRGB = hexToRgb(selectedCustomColour);
+    let mainRGB = hexToRgb(originalCustomColour);
+    let newMainRGB = hexToRgb(selectedCustomColour);
 
     // Calculate the differences
-    var diffR = newMainRGB.r - mainRGB.r;
-    var diffG = newMainRGB.g - mainRGB.g;
-    var diffB = newMainRGB.b - mainRGB.b;
+    let diffR = newMainRGB.r - mainRGB.r;
+    let diffG = newMainRGB.g - mainRGB.g;
+    let diffB = newMainRGB.b - mainRGB.b;
 
-    // Update colors
+    // Update colors and maintain shading
     document.documentElement.style.setProperty('--main-colour', `rgb(${newMainRGB.r}, ${newMainRGB.g}, ${newMainRGB.b})`);
     document.documentElement.style.setProperty('--light-accent', `rgb(${Math.round(newMainRGB.r - 0.5 * diffR)}, ${Math.round(newMainRGB.g - 0.5 * diffG)}, 
     ${Math.round(newMainRGB.b - 0.5 * diffB)})`);
     document.documentElement.style.setProperty('--dark-accent', `rgb(${Math.round(newMainRGB.r + 0.5 * diffR)}, ${Math.round(newMainRGB.g + 0.5 * diffG)}, ${Math.round(newMainRGB.b + 0.5 * diffB)})`);
     document.documentElement.style.setProperty('--checked-checkbox-colour', `rgb(${Math.round(newMainRGB.r - diffR)}, ${Math.round(newMainRGB.g - diffG)}, ${Math.round(newMainRGB.b - diffB)})`);
     document.documentElement.style.setProperty('--checkbox-border-colour', `rgb(${Math.round(newMainRGB.r + diffR)}, ${Math.round(newMainRGB.g + diffG)}, ${Math.round(newMainRGB.b + diffB)})`);
-  }
+}
 
 function hexToRgb(hex) {
     // Remove the hash sign if present
     hex = hex.replace(/^#/, '');
 
     // Parse the hex values
-    var bigint = parseInt(hex, 16);
+    let bigint = parseInt(hex, 16);
 
     // Extract the RGB values
-    var r = (bigint >> 16) & 255;
-    var g = (bigint >> 8) & 255;
-    var b = bigint & 255;
+    let r = (bigint >> 16) & 255;
+    let g = (bigint >> 8) & 255;
+    let b = bigint & 255;
 
     return { r: r, g: g, b: b };
-  }
+}

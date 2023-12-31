@@ -79,6 +79,8 @@
 }
 
 .placeholder {
+    transition: all;
+    transition-duration: 500ms;
     border: 1px solid black;
     background-color: var(--main-colour);
     font-family: "Verdana";
