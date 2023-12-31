@@ -1,6 +1,6 @@
 // Disabler and Enabler of Classes
 
-
+let diable = document.getElementsByClassName("diable")[0];
 
 // Animation checkbox functions
 

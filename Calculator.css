@@ -68,10 +68,7 @@
     top: 20%;
 }
 
-.checkbox-placeholder {
-    width: 250px;
-    height: 50px;
-    border-radius: 10px;
+.placeholder {
     border: 1px solid black;
     background-color: lightblue;
     font-family: "Verdana";
@@ -79,8 +76,17 @@
     padding-left: 30px;
     margin-bottom: 30px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* flex-direction: column; */
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#animation-placeholder,
+#preset-colour-placeholder,
+#custom-colour-placeholder {
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
 }
 
 input[type="checkbox"] {
@@ -93,7 +99,7 @@ label {
     cursor: pointer;
 }
 
-label:before {
+label.checkbox-label:before {
     content: "";
     position: absolute;
     left: 0;
@@ -101,10 +107,10 @@ label:before {
     width: 20px; /* Adjust the size of the custom checkbox */
     height: 20px;
     border: 2px solid #333; /* Border color of the custom checkbox */
-    background-color: #fff; /* Background color of the custom checkbox */
+    background-color: #ffffff; /* Background color of the custom checkbox */
 }
 
-input[type="checkbox"]:checked + label:before {
+input[type="checkbox"]:checked + label.checkbox-label:before {
     background-color: rgb(118, 181, 202); /* Change the background color when the checkbox is checked */
     border-color: rgb(79, 154, 179); /* Change the border color when the checkbox is checked */
     content: "\2714"; /* Check symbol */
@@ -116,13 +122,31 @@ input[type="checkbox"]:checked + label:before {
 
 /* Calculator Colour Options */
 
-.colour-modification-placeholder {
-    position: relative;
+#preset-colour-options-placeholder,
+#custom-colour-options-placeholder {
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
 }
 
+select {
+    width: 100px; /* Adjust the width of the submit button */
+    height: 30px;
+    font-family: "Verdana";
+    font-size: 16px;
+    cursor: pointer;
+}
 
+input[type="color"] {
+    width: 100px; /* Adjust the width of the submit button */
+    height: 30px;
+    cursor: pointer;
+}
 
-
+/* input[type="submit"] {
+    width: 25%;
+    height: 20px;
+} */
 
 
 
