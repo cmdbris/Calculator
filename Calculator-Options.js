@@ -66,9 +66,18 @@ customColour.addEventListener('input', function() {
 });
 
 applyColourButton.addEventListener('click', function () {
-    let selectedPresetColour = this.value;
-    alert(selectedPresetColour);
+    if (checkbox_TogglePresetColour.checked) {
+        applyPresetColour(presetColour.value);
+    }
+    else if (checkbox_ToggleCustomColour.checked) {
+        applyCustomColour(customColour.value);
+    }
 });
 
-let selectedPresetColour = presetColour.value;
-let selectedCustomColour = customColour.value;
+function applyPresetColour(selectedPresetColour) {
+
+}
+
+function applyCustomColour(selectedCustomColour) {
+
+}
