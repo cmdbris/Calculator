@@ -78,6 +78,38 @@ function applyPresetColour(selectedPresetColour) {
 
 }
 
-function applyCustomColour(selectedCustomColour) {
+let originalCustomColour = '#ADD8E6';
 
-}
+function applyCustomColour(selectedCustomColour) {
+    // Convert hex to RGB
+    var mainRGB = hexToRgb(originalCustomColour);
+    var newMainRGB = hexToRgb(selectedCustomColour);
+
+    // Calculate the differences
+    var diffR = newMainRGB.r - mainRGB.r;
+    var diffG = newMainRGB.g - mainRGB.g;
+    var diffB = newMainRGB.b - mainRGB.b;
+
+    // Update colors
+    document.documentElement.style.setProperty('--main-colour', `rgb(${newMainRGB.r}, ${newMainRGB.g}, ${newMainRGB.b})`);
+    document.documentElement.style.setProperty('--light-accent', `rgb(${Math.round(newMainRGB.r - 0.5 * diffR)}, ${Math.round(newMainRGB.g - 0.5 * diffG)}, 
+    ${Math.round(newMainRGB.b - 0.5 * diffB)})`);
+    document.documentElement.style.setProperty('--dark-accent', `rgb(${Math.round(newMainRGB.r + 0.5 * diffR)}, ${Math.round(newMainRGB.g + 0.5 * diffG)}, ${Math.round(newMainRGB.b + 0.5 * diffB)})`);
+    document.documentElement.style.setProperty('--checked-checkbox-colour', `rgb(${Math.round(newMainRGB.r - diffR)}, ${Math.round(newMainRGB.g - diffG)}, ${Math.round(newMainRGB.b - diffB)})`);
+    document.documentElement.style.setProperty('--checkbox-border-colour', `rgb(${Math.round(newMainRGB.r + diffR)}, ${Math.round(newMainRGB.g + diffG)}, ${Math.round(newMainRGB.b + diffB)})`);
+  }
+
+function hexToRgb(hex) {
+    // Remove the hash sign if present
+    hex = hex.replace(/^#/, '');
+
+    // Parse the hex values
+    var bigint = parseInt(hex, 16);
+
+    // Extract the RGB values
+    var r = (bigint >> 16) & 255;
+    var g = (bigint >> 8) & 255;
+    var b = bigint & 255;
+
+    return { r: r, g: g, b: b };
+  }
