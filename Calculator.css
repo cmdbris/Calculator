@@ -35,6 +35,7 @@
     background-color: var(--main-colour);
     font-family: "Verdana";
     text-align: center;
+    cursor: pointer;
     transition: all;
     transition-duration: 500ms;
 }
@@ -49,6 +50,7 @@
 
 #display {
     text-align: left;
+    cursor: default;
 }
 
 .enable-hover td:hover {
