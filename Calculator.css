@@ -79,8 +79,11 @@ table.calculator-table td.variable,
 }
 
 .enable-hover.calculator-table td:hover {
-    background-color: lightcoral;
     border-radius: 50%;
+}
+
+.enable-hover.calculator-table td:active {
+    background-color: lightcoral;
 }
 
 .enable-hover #display:hover {
