@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+    <!-- <style>
         html,
         body {
             overflow: hidden;
             margin: 0;
             padding: 0;
         }
-    </style>
+    </style> -->
     <link rel="stylesheet" href="Calculator.css">
     <script src="Calculator.js" defer></script>
     <script src="Calculator-Options.js" defer></script>
@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <div class="page-background"></div>
     <div class="options-container">
         <div class="placeholder" id="animation-placeholder">
             <div id="animation-checkbox">
@@ -44,15 +45,17 @@
         <div class="colour-modification-placeholder">
             <div class="placeholder" id="preset-colour-options-placeholder">
                 <select id="preset-colour-options">
-                    <option class="preset-colour" preset-colour-data="default">default</option>
-                    <option class="preset-colour" preset-colour-data="red">red</option>
-                    <option class="preset-colour" preset-colour-data="orange">orange</option>
-                    <option class="preset-colour" preset-colour-data="yellow">yellow</option>
-                    <option class="preset-colour" preset-colour-data="green">green</option>
-                    <option class="preset-colour" preset-colour-data="teal">teal</option>
-                    <option class="preset-colour" preset-colour-data="blue">blue</option>
-                    <option class="preset-colour" preset-colour-data="purple">purple</option>
-                    <option class="preset-colour" preset-colour-data="pink">pink</option>
+                    <optgroup label="Colours">
+                        <option class="preset-colour" preset-colour-data="default">default</option>
+                        <option class="preset-colour" preset-colour-data="red">red</option>
+                        <option class="preset-colour" preset-colour-data="orange">orange</option>
+                        <option class="preset-colour" preset-colour-data="yellow">yellow</option>
+                        <option class="preset-colour" preset-colour-data="green">green</option>
+                        <option class="preset-colour" preset-colour-data="teal">teal</option>
+                        <option class="preset-colour" preset-colour-data="blue">blue</option>
+                        <option class="preset-colour" preset-colour-data="purple">purple</option>
+                        <option class="preset-colour" preset-colour-data="pink">pink</option>
+                    </optgroup>
                 </select>
                 <label for="preset-colour-options">Customize</label>
             </div>

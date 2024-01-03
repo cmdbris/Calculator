@@ -8,6 +8,28 @@
     --checkbox-border-colour: rgb(79, 154, 179);
 }
 
+/* Page attributes */
+
+html,
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+body > .page-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.5;
+    /* background: var(--main-colour); */
+    background: linear-gradient(180deg, var(--dark-accent) 0%, var(--main-colour) 50%, var(--light-accent) 100%);
+}
+
 /* Calculator Default Attributes */
 
 .container {
@@ -40,11 +62,14 @@ table.calculator-table td {
     transition-duration: 500ms;
 }
 
-table.calculator-table > tr > td.number, #enter, #ans {
+table.calculator-table td.number,
+#enter,
+#ans {
     background-color: var(--light-accent);
 }
 
-table.calculator-table > tr > td.variable, #variable-assignment {
+table.calculator-table td.variable,
+#variable-assignment {
     background-color: var(--dark-accent);
 }
 
@@ -54,7 +79,7 @@ table.calculator-table > tr > td.variable, #variable-assignment {
 }
 
 .enable-hover.calculator-table td:hover {
-    background-color:lightcoral;
+    background-color: lightcoral;
     border-radius: 50%;
 }
 
@@ -64,7 +89,8 @@ table.calculator-table > tr > td.variable, #variable-assignment {
     transform: scale(1.10);
 }
 
-.enable-hover #enter:hover, .enable-hover #ans:hover {
+.enable-hover #enter:hover,
+.enable-hover #ans:hover {
     background-color: lightcoral;
     border-radius: 10px;
     transform: scale(1.10);
@@ -122,8 +148,6 @@ table.variable-history-table td {
 
 .options-container {
     position: absolute;
-    width: 100%;
-    height: 100%;
     left: 80%;
     top: 20%;
 }
@@ -152,12 +176,14 @@ table.variable-history-table td {
 }
 
 input[type="checkbox"] {
-    display: none; /* Hide the default checkbox */
+    display: none;
+    /* Hide the default checkbox */
 }
 
 label {
     position: relative;
-    padding-left: 40px; /* Space for the custom checkbox */
+    padding-left: 40px;
+    /* Space for the custom checkbox */
     cursor: pointer;
 }
 
@@ -166,20 +192,29 @@ label.checkbox-label:before {
     position: absolute;
     left: 0;
     top: 0;
-    width: 20px; /* Adjust the size of the custom checkbox */
+    width: 20px;
+    /* Adjust the size of the custom checkbox */
     height: 20px;
-    border: 2px solid #333; /* Border color of the custom checkbox */
-    background-color: #ffffff; /* Background color of the custom checkbox */
+    border: 2px solid #333;
+    /* Border color of the custom checkbox */
+    background-color: #ffffff;
+    /* Background color of the custom checkbox */
 }
 
-input[type="checkbox"]:checked + label.checkbox-label:before {
-    background-color: var(--checked-checkbox-colour); /* Change the background color when the checkbox is checked */
-    border-color: var(--checkbox-border-colour); /* Change the border color when the checkbox is checked */
-    content: "\2714"; /* Check symbol */
-            color: #fff; /* Color of the check symbol */
-            font-size: 16px; /* Adjust the font size of the check symbol */
-            text-align: center;
-            line-height: 20px; /* Keep the line height consistent */
+input[type="checkbox"]:checked+label.checkbox-label:before {
+    background-color: var(--checked-checkbox-colour);
+    /* Change the background color when the checkbox is checked */
+    border-color: var(--checkbox-border-colour);
+    /* Change the border color when the checkbox is checked */
+    content: "\2714";
+    /* Check symbol */
+    color: #fff;
+    /* Color of the check symbol */
+    font-size: 16px;
+    /* Adjust the font size of the check symbol */
+    text-align: center;
+    line-height: 20px;
+    /* Keep the line height consistent */
 }
 
 /* Calculator Colour Options */
@@ -191,7 +226,7 @@ input[type="checkbox"]:checked + label.checkbox-label:before {
     border-radius: 10px;
 }
 
-select {
+select#preset-colour-options {
     width: 100px;
     height: 30px;
     font-family: "Verdana";
@@ -199,8 +234,8 @@ select {
     cursor: pointer;
 }
 
-input[type="color"] {
-    width: 100px; 
+input[type="color"].custom-colour {
+    width: 100px;
     height: 30px;
     cursor: pointer;
 }
