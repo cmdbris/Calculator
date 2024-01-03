@@ -17,7 +17,7 @@ body {
     padding: 0;
 }
 
-body > .page-background {
+body > section.page-background {
     position: fixed;
     top: 0;
     right: 0;
@@ -30,9 +30,57 @@ body > .page-background {
     background: linear-gradient(180deg, var(--dark-accent) 0%, var(--main-colour) 50%, var(--light-accent) 100%);
 }
 
+/* Calculator Title */
+
+section.calculator-title-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* @keyframes calculator-title-hover-animation {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+} */
+
+@property --angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.calculator-title {
+    --angle: 0deg;
+    user-select: none;
+    position: relative;
+    width: 700px;
+    height: 100px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 1px solid black;
+    font-family: "Verdana";
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 100px;
+    transition: --angle 1000ms ease-in-out;
+    background: linear-gradient(var(--angle), var(--dark-accent) 0%, var(--main-colour) 50%, var(--light-accent) 100%);
+}
+
+.enable-hover.calculator-title:hover {
+    --angle: 180deg;
+}
+
 /* Calculator Default Attributes */
 
-.container {
+section.calculator-table-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -58,8 +106,7 @@ table.calculator-table td {
     font-family: "Verdana";
     text-align: center;
     cursor: pointer;
-    transition: all;
-    transition-duration: 500ms;
+    transition: background-color 500ms, border-radius 300ms, transform 500ms, box-shadow 150ms;
 }
 
 table.calculator-table td.number,
@@ -82,9 +129,9 @@ table.calculator-table td.variable,
     border-radius: 50%;
 }
 
-.enable-hover.calculator-table td:active {
+/* .enable-hover.calculator-table td:hover {
     background-color: lightcoral;
-}
+} */
 
 .enable-hover #display:hover {
     background-color: var(--light-accent);
@@ -99,9 +146,13 @@ table.calculator-table td.variable,
     transform: scale(1.10);
 }
 
+table.calculator-table td:active {
+    box-shadow: inset 1px 1px 10px #333;
+}
+
 /* Calculator Variable History Table */
 
-.variable-history-container {
+section.variable-history-container {
     position: absolute;
     left: 2.5%;
     top: 15%;
@@ -149,7 +200,7 @@ table.variable-history-table td {
 
 /* Calculator Checkboxes */
 
-.options-container {
+section.options-container {
     position: absolute;
     left: 80%;
     top: 20%;
@@ -249,12 +300,16 @@ input[type="color"].custom-colour {
     border-radius: 10px;
     padding-left: 0px;
     justify-content: center;
-    transition: all;
-    transition-duration: 500ms;
+    transition: background-color 500ms, box-shadow 150ms;
 }
 
 #apply-colour:hover {
     background-color: var(--dark-accent);
+    cursor: pointer;
+}
+
+#apply-colour:active {
+    box-shadow: inset 1px 1px 10px #333;
     cursor: pointer;
 }
 
@@ -263,3 +318,5 @@ input[type="color"].custom-colour {
 .disable {
     display: none;
 }
+
+/* Hide Class for Javascript */

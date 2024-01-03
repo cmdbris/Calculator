@@ -161,12 +161,26 @@ function computeInputs() {
         return;
     }
 
+    let typingEffectArray = Ans.toString().split('');
+
     if (displayInputs.length > 0 && displayInputs[0] >= 'A' && displayInputs[0] <= 'G' && displayInputs[1] == '=') {
         variableValues[inputVariable] = Ans;
         display.innerHTML = `${inputVariable} = ${Ans}`;
-        variableHistoryValues[inputVariable].innerHTML = `${inputVariable} = ${Ans}`;
+
+        variableHistoryValues[inputVariable].innerHTML = `${inputVariable} = `;
+        for (let i = 0; i < typingEffectArray.length; i++) {
+            setTimeout(function () {
+                variableHistoryValues[inputVariable].innerHTML += `${typingEffectArray[i]}`;
+            }, i * 50); // Multiply the delay by the current iteration index
+        }
     } else {
         display.innerHTML = Ans;
-        ansHistory.innerHTML = `Ans = ${Ans}`;
+        ansHistory.innerHTML = `Ans = `;
+
+        for (let i = 0; i < typingEffectArray.length; i++) {
+            setTimeout(function () {
+                ansHistory.innerHTML += `${typingEffectArray[i]}`;
+            }, i * 50); // Multiply the delay by the current iteration index
+        }
     }
 }

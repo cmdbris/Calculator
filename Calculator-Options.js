@@ -1,16 +1,18 @@
 // Disabler and Enabler of Classes
 
-let disable1 = document.getElementsByClassName("disable")[0];
+let disable = document.getElementsByClassName("disable")[0];
 
 // Animation checkbox functions
 
 let checkbox_ToggleAnimation = document.getElementById("animation-toggle");
 let calculatorTable = document.getElementsByClassName("calculator-table")[0];
 let variableHistoryTable = document.getElementsByClassName('variable-history-table')[0];
+let calculatorTitle = document.getElementsByClassName('calculator-title')[0];
 
 checkbox_ToggleAnimation.addEventListener("change", function () {
     calculatorTable.classList.toggle('enable-hover', checkbox_ToggleAnimation.checked);
     variableHistoryTable.classList.toggle('enable-hover', checkbox_ToggleAnimation.checked);
+    calculatorTitle.classList.toggle('enable-hover', checkbox_ToggleAnimation.checked);
 });
 
 // Colour changing checkboxes functions
@@ -129,7 +131,7 @@ function applyCustomColour(selectedCustomColour) {
     document.documentElement.style.setProperty('--light-accent', `rgb(${Math.round(newMainRGB.r - 0.5 * diffR)}, ${Math.round(newMainRGB.g - 0.5 * diffG)}, 
     ${Math.round(newMainRGB.b - 0.5 * diffB)})`);
     document.documentElement.style.setProperty('--dark-accent', `rgb(${Math.round(newMainRGB.r + 0.5 * diffR)}, ${Math.round(newMainRGB.g + 0.5 * diffG)}, ${Math.round(newMainRGB.b + 0.5 * diffB)})`);
-    document.documentElement.style.setProperty('--checked-checkbox-colour', `rgb(${Math.round(newMainRGB.r - diffR)}, ${Math.round(newMainRGB.g - diffG)}, ${Math.round(newMainRGB.b - diffB)})`);
+    document.documentElement.style.setProperty('--checked-checkbox-colour', `rgb(${Math.round(mainRGB.r + 0.5 * diffR)}, ${Math.round(mainRGB.g + 0.5 * diffG)}, ${Math.round(mainRGB.b + 0.5 * diffB)})`);
     document.documentElement.style.setProperty('--checkbox-border-colour', `rgb(${Math.round(newMainRGB.r + diffR)}, ${Math.round(newMainRGB.g + diffG)}, ${Math.round(newMainRGB.b + diffB)})`);
 }
 
