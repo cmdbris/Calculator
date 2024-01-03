@@ -1,3 +1,5 @@
+// Calculator Elements
+
 let display = document.getElementById('display');
 let numberButton = document.querySelectorAll('.number');
 let clearButton = document.getElementById('clear');
@@ -9,6 +11,21 @@ let variableButton = document.querySelectorAll('.variable');
 let variableAssignmentButton = document.getElementById('variable-assignment');
 let ansButton = document.getElementById('ans');
 
+// Variable History Elements
+
+
+
+let ansHistory = document.getElementById('ans-history');
+let variableHistory = document.querySelectorAll('.variable-history');
+let variableHistoryValues = {}; // Object to store variable history assignments
+const variableHistoryNames = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+variableHistoryNames.forEach((variableHistoryName, index) => {
+    variableHistoryValues[variableHistoryName] = variableHistory[index]; // or any default value you want
+});
+
+
+// Initialize Global Calculator Variables
+
 let displayInputs = [];
 let calculatorInputs = [];
 let Ans;
@@ -17,7 +34,13 @@ let variableValues = {}; // Object to store variable assignments
 const variableNames = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 variableNames.forEach(variableName => {
     variableValues[variableName] = undefined; // or any default value you want
-  });
+});
+
+
+
+// Event Listeners for Calculator
+
+
 
 // Iterate through the elements and add a click event listener to each
 numberButton.forEach(function (element) {
@@ -89,7 +112,9 @@ variableAssignmentButton.addEventListener('click', function () {
     addInput(this.innerHTML, '');
 });
 
-// // Functions used to support the event listeners // //
+
+
+// Functions used by Event Listeners
 
 
 
@@ -109,13 +134,16 @@ function addInput(element, calculatorData) {
     if (element === '=' && displayInputs.length > 0) {
         calculatorInputs.splice(calculatorInputs.length - 2, 1, ''); // array.splice(indexToReplace, 1, newValue);
     }
-    
+
 }
 
 function clearInputs() {
     displayInputs = [];
     calculatorInputs = [];
-    updateDisplay(displayInputs);
+    display.innerHTML = 'CLEAR'
+    setTimeout(function () {
+        updateDisplay(displayInputs);
+    }, 750);
 }
 
 function deleteInputs() {
@@ -136,7 +164,9 @@ function computeInputs() {
     if (displayInputs.length > 0 && displayInputs[0] >= 'A' && displayInputs[0] <= 'G' && displayInputs[1] == '=') {
         variableValues[inputVariable] = Ans;
         display.innerHTML = `${inputVariable} = ${Ans}`;
+        variableHistoryValues[inputVariable].innerHTML = `${inputVariable} = ${Ans}`;
     } else {
         display.innerHTML = Ans;
+        ansHistory.innerHTML = `Ans = ${Ans}`;
     }
 }

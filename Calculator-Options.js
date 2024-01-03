@@ -6,9 +6,11 @@ let disable1 = document.getElementsByClassName("disable")[0];
 
 let checkbox_ToggleAnimation = document.getElementById("animation-toggle");
 let calculatorTable = document.getElementsByClassName("calculator-table")[0];
+let variableHistoryTable = document.getElementsByClassName('variable-history-table')[0];
 
 checkbox_ToggleAnimation.addEventListener("change", function () {
     calculatorTable.classList.toggle('enable-hover', checkbox_ToggleAnimation.checked);
+    variableHistoryTable.classList.toggle('enable-hover', checkbox_ToggleAnimation.checked);
 });
 
 // Colour changing checkboxes functions

@@ -17,7 +17,7 @@
     transform: translate(-50%, -50%);
 }
 
-.calculator-table {
+table.calculator-table {
     user-select: none;
     position: relative;
     border-collapse: separate;
@@ -25,7 +25,7 @@
     border: 2px solid rgb(148, 148, 148);
 }
 
-.calculator-table td {
+table.calculator-table td {
     width: 100px;
     height: 50px;
     border-collapse: collapse;
@@ -40,11 +40,11 @@
     transition-duration: 500ms;
 }
 
-.calculator-table td.number, #enter, #ans {
+table.calculator-table > tr > td.number, #enter, #ans {
     background-color: var(--light-accent);
 }
 
-.calculator-table td.variable, #variable-assignment {
+table.calculator-table > tr > td.variable, #variable-assignment {
     background-color: var(--dark-accent);
 }
 
@@ -53,7 +53,7 @@
     cursor: default;
 }
 
-.enable-hover td:hover {
+.enable-hover.calculator-table td:hover {
     background-color:lightcoral;
     border-radius: 50%;
 }
@@ -67,6 +67,54 @@
 .enable-hover #enter:hover, .enable-hover #ans:hover {
     background-color: lightcoral;
     border-radius: 10px;
+    transform: scale(1.10);
+}
+
+/* Calculator Variable History Table */
+
+.variable-history-container {
+    position: absolute;
+    left: 2.5%;
+    top: 15%;
+}
+
+table.variable-history-table {
+    user-select: none;
+    position: relative;
+    border-collapse: separate;
+    border-spacing: 10px;
+    border: 2px solid rgb(148, 148, 148);
+}
+
+table.variable-history-table td {
+    width: 300px;
+    height: 35px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    font-family: "Verdana";
+    transition: all;
+    transition-duration: 500ms;
+}
+
+#variable-history-title {
+    text-align: center;
+    background-color: var(--main-colour);
+}
+
+.variable-history {
+    background-color: var(--dark-accent);
+}
+
+#ans-history {
+    background-color: var(--light-accent);
+}
+
+.enable-hover #variable-history-title:hover,
+.enable-hover #ans-history:hover,
+.enable-hover.variable-history-table td.variable-history:hover {
+    background-color: var(--light-accent);
     transform: scale(1.10);
 }
 
