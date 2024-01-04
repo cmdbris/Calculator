@@ -2,7 +2,7 @@
 
 let disable = document.getElementsByClassName("disable")[0];
 
-// Animation checkbox functions
+// Animation Checkbox Functions
 
 let checkbox_ToggleAnimation = document.getElementById("animation-toggle");
 let calculatorTable = document.getElementsByClassName("calculator-table")[0];
@@ -15,7 +15,7 @@ checkbox_ToggleAnimation.addEventListener("change", function () {
     calculatorTitle.classList.toggle('enable-hover', checkbox_ToggleAnimation.checked);
 });
 
-// Colour changing checkboxes functions
+// Colour Changing Checkboxes Functions
 
 let checkbox_TogglePresetColour = document.getElementById('preset-colour-toggle');
 let checkbox_ToggleCustomColour = document.getElementById('custom-colour-toggle');
@@ -56,7 +56,7 @@ function updateCheckboxes(checkbox) {
     }
 }
 
-// Colour changing options functions
+// Colour Changing Options Event Listeners
 
 let customColour = document.getElementById('custom-colour');
 let presetColour = document.getElementById('preset-colour-options');
@@ -78,14 +78,18 @@ applyColourButton.addEventListener('click', function () {
     }
 });
 
+// Colour Changing Options Functions
+
+let elementProperty =  document.documentElement.style;
+
 function applyPresetColour(selectedPresetColour) {
     switch (selectedPresetColour) {
         case 'default':
-            document.documentElement.style.setProperty('--main-colour', 'rgb(173, 216, 230)');
-            document.documentElement.style.setProperty('--light-accent', 'rgb(202, 238, 250)');
-            document.documentElement.style.setProperty('--dark-accent', 'rgb(146, 202, 221)');
-            document.documentElement.style.setProperty('--checked-checkbox-colour', 'rgb(118, 181, 202)');
-            document.documentElement.style.setProperty('--checkbox-border-colour', 'rgb(79, 154, 179)');
+            elementProperty.setProperty('--main-colour', 'rgb(173, 216, 230)');
+            elementProperty.setProperty('--light-accent', 'rgb(202, 238, 250)');
+            elementProperty.setProperty('--dark-accent', 'rgb(146, 202, 221)');
+            elementProperty.setProperty('--checked-checkbox-colour', 'rgb(118, 181, 202)');
+            elementProperty.setProperty('--checkbox-border-colour', 'rgb(79, 154, 179)');
             break;
         case 'red':
             applyCustomColour('#FE8686');
@@ -127,12 +131,11 @@ function applyCustomColour(selectedCustomColour) {
     let diffB = newMainRGB.b - mainRGB.b;
 
     // Update colors and maintain shading
-    document.documentElement.style.setProperty('--main-colour', `rgb(${newMainRGB.r}, ${newMainRGB.g}, ${newMainRGB.b})`);
-    document.documentElement.style.setProperty('--light-accent', `rgb(${Math.round(newMainRGB.r - 0.5 * diffR)}, ${Math.round(newMainRGB.g - 0.5 * diffG)}, 
-    ${Math.round(newMainRGB.b - 0.5 * diffB)})`);
-    document.documentElement.style.setProperty('--dark-accent', `rgb(${Math.round(newMainRGB.r + 0.5 * diffR)}, ${Math.round(newMainRGB.g + 0.5 * diffG)}, ${Math.round(newMainRGB.b + 0.5 * diffB)})`);
-    document.documentElement.style.setProperty('--checked-checkbox-colour', `rgb(${Math.round(mainRGB.r + 0.5 * diffR)}, ${Math.round(mainRGB.g + 0.5 * diffG)}, ${Math.round(mainRGB.b + 0.5 * diffB)})`);
-    document.documentElement.style.setProperty('--checkbox-border-colour', `rgb(${Math.round(newMainRGB.r + diffR)}, ${Math.round(newMainRGB.g + diffG)}, ${Math.round(newMainRGB.b + diffB)})`);
+    elementProperty.setProperty('--main-colour', `rgb(${newMainRGB.r}, ${newMainRGB.g}, ${newMainRGB.b})`);
+    elementProperty.setProperty('--light-accent', `rgb(${Math.round(newMainRGB.r - 0.5 * diffR)}, ${Math.round(newMainRGB.g - 0.5 * diffG)}, ${Math.round(newMainRGB.b - 0.5 * diffB)})`);
+    elementProperty.setProperty('--dark-accent', `rgb(${Math.round(newMainRGB.r + 0.5 * diffR)}, ${Math.round(newMainRGB.g + 0.5 * diffG)}, ${Math.round(newMainRGB.b + 0.5 * diffB)})`);
+    elementProperty.setProperty('--checked-checkbox-colour', `rgb(${Math.round(mainRGB.r + 0.5 * diffR)}, ${Math.round(mainRGB.g + 0.5 * diffG)}, ${Math.round(mainRGB.b + 0.5 * diffB)})`);
+    elementProperty.setProperty('--checkbox-border-colour', `rgb(${Math.round(newMainRGB.r + diffR)}, ${Math.round(newMainRGB.g + diffG)}, ${Math.round(newMainRGB.b + diffB)})`);
 }
 
 function hexToRgb(hex) {
