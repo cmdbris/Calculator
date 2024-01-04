@@ -234,7 +234,7 @@ input[type="checkbox"] {
     /* Hide the default checkbox */
 }
 
-label {
+label.checkbox-label {
     position: relative;
     padding-left: 40px;
     /* Space for the custom checkbox */
@@ -275,7 +275,7 @@ input[type="checkbox"]:checked+label.checkbox-label:before {
 
 #preset-colour-options-placeholder,
 #custom-colour-options-placeholder {
-    width: 300px;
+    width: 250px;
     height: 50px;
     border-radius: 10px;
 }
@@ -283,19 +283,42 @@ input[type="checkbox"]:checked+label.checkbox-label:before {
 select#preset-colour-options {
     width: 100px;
     height: 30px;
+    margin-inline-end: 15px;
     font-family: "Verdana";
     font-size: 16px;
     cursor: pointer;
 }
 
+select#preset-colour-options > optgroup {
+    font-family: "Verdana";
+    margin-right: 10px;
+    background-color: var(--dark-accent);
+}
+
+select#preset-colour-options > optgroup > option:nth-child(even) {
+    font-family: "Verdana";
+    background-color: var(--main-colour);
+}
+
+select#preset-colour-options > optgroup > option:nth-child(odd) {
+    font-family: "Verdana";
+    background-color: var(--light-accent);
+}
+
+select#preset-colour-options > optgroup > option:hover {
+    background-color: var(--light-accent);
+}
+
 input[type="color"].custom-colour {
     width: 100px;
     height: 30px;
+    margin-inline-end: 15px;
+    font-family: "Verdana";
     cursor: pointer;
 }
 
 #apply-colour {
-    width: 250px;
+    width: 290px;
     height: 50px;
     border-radius: 10px;
     padding-left: 0px;
